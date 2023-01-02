@@ -148,25 +148,44 @@ Future<Object?> showSignInDialog(BuildContext context) {
                     primary: true,
                     child: SizedBox(
                       height: constraints.biggest.height,
-                      child: Column(
-                        // ignore: prefer_const_literals_to_create_immutables
+                      child: Stack(
+                        clipBehavior: Clip.none,
+                        fit: StackFit.expand,
                         children: [
-                          const Spacer(),
-                          const Text(
-                            'Sign In',
-                            style:
-                                TextStyle(fontSize: 34, fontFamily: 'Poppins'),
+                          Column(
+                            // ignore: prefer_const_literals_to_create_immutables
+                            children: [
+                              const Spacer(),
+                              const Text(
+                                'Sign In',
+                                style: TextStyle(
+                                    fontSize: 34, fontFamily: 'Poppins'),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.symmetric(vertical: 16),
+                                child: Text(
+                                  'Access to 240+ hours of content. Learn design and code, '
+                                  'by building real apps with Flutter and Swift.',
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                              const SignInForm(),
+                              const Spacer(),
+                            ],
                           ),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 16),
-                            child: Text(
-                              'Access to 240+ hours of content. Learn design and code, '
-                              'by building real apps with Flutter and Swift.',
-                              textAlign: TextAlign.center,
+                          const Positioned(
+                            left: 0,
+                            right: 0,
+                            bottom: -12,
+                            child: CircleAvatar(
+                              radius: 16,
+                              backgroundColor: Colors.white,
+                              child: Icon(
+                                Icons.close,
+                                color: Colors.black,
+                              ),
                             ),
-                          ),
-                          const SignInForm(),
-                          const Spacer(),
+                          )
                         ],
                       ),
                     ),
