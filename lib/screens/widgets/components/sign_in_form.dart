@@ -123,7 +123,8 @@ class SignInForm extends StatelessWidget {
   }
 }
 
-Future<Object?> showSignInDialog(BuildContext context) {
+Future<Object?> showSignInDialog(BuildContext context,
+    {ValueChanged? onClose}) {
   return showGeneralDialog(
     context: context,
     barrierDismissible: true,
@@ -212,5 +213,7 @@ Future<Object?> showSignInDialog(BuildContext context) {
         ),
       ),
     ),
-  );
+
+    /// TIP
+  ).then((value) => onClose?.call(value));
 }

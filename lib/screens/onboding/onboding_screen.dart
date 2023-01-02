@@ -58,9 +58,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     const Spacer(flex: 2),
                     AppAnimatedButton(
                       buttonController: _buttonController,
-                      onPress: () => Future.delayed(
-                          const Duration(milliseconds: 650),
-                          () => showSignInDialog(context)),
+                      onPress: () =>
+                          Future.delayed(const Duration(milliseconds: 650), () {
+                        // setState(() {
+                        //   isSignInDialogShown = true;
+                        // });
+
+                        showSignInDialog(
+                          context,
+                          onClose: (_) {
+                            // setState(() {
+                            //   isSignInDialogShown = false;
+                            // });
+                          },
+                        );
+                      }),
                       text: 'Start the course',
                       icon: CupertinoIcons.arrow_right,
                     ),
