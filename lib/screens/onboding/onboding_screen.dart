@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
@@ -60,7 +58,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     const Spacer(flex: 2),
                     AppAnimatedButton(
                       buttonController: _buttonController,
-                      onPress: () {},
+                      onPress: () => showSignInDialog(context),
                       text: 'Start the course',
                       icon: CupertinoIcons.arrow_right,
                     ),
@@ -68,7 +66,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       padding: EdgeInsets.symmetric(vertical: 24),
                       child: Text(
                           'Purchase includes access to 30+ courses, 240+ premium tutorials, a certificate and more!'),
-                    )
+                    ),
                   ],
                 ),
               ),
