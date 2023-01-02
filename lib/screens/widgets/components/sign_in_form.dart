@@ -128,6 +128,18 @@ Future<Object?> showSignInDialog(BuildContext context) {
     context: context,
     barrierDismissible: true,
     barrierLabel: 'Sing In',
+    transitionDuration: const Duration(milliseconds: 400),
+    transitionBuilder: (_, animation, __, child) {
+      Tween<Offset> tween;
+      tween = Tween(begin: const Offset(0, -1), end: Offset.zero);
+
+      return SlideTransition(
+        position: tween.animate(
+          CurvedAnimation(parent: animation, curve: Curves.easeInOut),
+        ),
+        child: child,
+      );
+    },
     pageBuilder: (context, _, __) => SafeArea(
       child: Center(
         child: Container(
@@ -173,16 +185,19 @@ Future<Object?> showSignInDialog(BuildContext context) {
                               const Spacer(),
                             ],
                           ),
-                          const Positioned(
+                          Positioned(
                             left: 0,
                             right: 0,
                             bottom: -12,
-                            child: CircleAvatar(
-                              radius: 16,
-                              backgroundColor: Colors.white,
-                              child: Icon(
-                                Icons.close,
-                                color: Colors.black,
+                            child: GestureDetector(
+                              onTap: () => Navigator.of(context).pop(),
+                              child: const CircleAvatar(
+                                radius: 16,
+                                backgroundColor: Colors.white,
+                                child: Icon(
+                                  Icons.close,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
                           )
